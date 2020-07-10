@@ -1,7 +1,7 @@
 package com.hp.springcloud.controller;
 
-import com.hp.springcloud.entities.CommonResult;
-import com.hp.springcloud.entities.PayMent;
+import com.hp.springcloud.entites.CommonResult;
+import com.hp.springcloud.entites.PayMent;
 import com.hp.springcloud.service.PayMentService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;

@@ -1,7 +1,7 @@
 package com.hp.springcloud.service.impl;
 
 import com.hp.springcloud.dao.PayMentDao;
-import com.hp.springcloud.entities.PayMent;
+import com.hp.springcloud.entites.PayMent;
 import com.hp.springcloud.service.PayMentService;
 import org.springframework.stereotype.Service;
 

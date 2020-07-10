@@ -6,6 +6,7 @@ spring:
 #服务名称
   application:
     name: cloud-payment-service
+
  #服务数据库配置
   datasource:
     type: com.alibaba.druid.pool.DruidDataSource
@@ -14,7 +15,14 @@ spring:
     username: root
     password: liu
 
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+       defauft: http://localhost:7001/eureka
+
 #配置mybatis相关
 mybatis:
   mapper-locations: classpath:mapper/*.xml     #mapper文件的位置
-  type-aliases-package: com.hp.springcloud.entites  #所有Entity别名类所在包
+  type-aliases-package: com.hp.springcloud.entites #所有Entity别名类所在包

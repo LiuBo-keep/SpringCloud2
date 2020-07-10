@@ -1,4 +1,4 @@
-package com.hp.springcloud.entities;
+package com.hp.springcloud.entites;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
  * @ClassName CommonResult
  * @Description TODO
  * @Author 17126
- * @Date 2020/7/8 23:07
+ * @Date 2020/7/10 22:04
  */
 @Data
 @AllArgsConstructor
@@ -34,4 +34,3 @@ public class CommonResult<T> {
         this(code, message, null);
     }
 }
-

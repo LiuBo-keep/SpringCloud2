@@ -1,4 +1,4 @@
-package com.hp.springcloud.entities;
+package com.hp.springcloud.entites;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -10,9 +10,8 @@ import java.io.Serializable;
  * @ClassName PayMent
  * @Description TODO
  * @Author 17126
- * @Date 2020/7/7 23:12
+ * @Date 2020/7/10 22:04
  */
-
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
