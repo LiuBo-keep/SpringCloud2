@@ -8,7 +8,7 @@ spring:
 
 eureka:
   instance:
-    hostname: 127.0.0.1     #euraka服务端的实例名称
+    hostname: localhost     #euraka服务端的实例名称
   client:
   #false表示不向注册中心注册自己
      register-with-eureka: false
