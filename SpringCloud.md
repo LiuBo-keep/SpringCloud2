@@ -23,4 +23,13 @@ Eureka采用CS的设计框架，EurekaServer作为服务注册功能的服务器
 - EurekaClient通过注册中心进行访问
    是一个Java客户端，用于简化EurekaServer的交互，客户端同时也具备一个内置的，使用轮询负载算法的
    负载均衡器。在应用启动后，将会向EurekaServer发送心跳(默认周期为30s)。如果EurekaServer在多个
-   心跳周期内没有接受到某个节点的心跳，EurekaServer将会从服务注册表中把这个服务节点移除(默认90s)    
+   心跳周期内没有接受到某个节点的心跳，EurekaServer将会从服务注册表中把这个服务节点移除(默认90s)
+   
+ ## 微服务注册名称配置说明
+ ![在这里插入图片描述](https://img-blog.csdnimg.cn/20200711001237999.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMDcyMzk5,size_16,color_FFFFFF,t_70)
+ 
+ 
+ ## 自我保护机制
+ 
+ ![在这里插入图片描述](https://img-blog.csdnimg.cn/20200711001348572.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMDcyMzk5,size_16,color_FFFFFF,t_70)
+       
