@@ -1,11 +1,6 @@
 server:
   port: 7001
 
-spring:
-  application:
-    name: cloud-eureka-server7001
-
-
 eureka:
   instance:
     hostname: eureka7001.com     #euraka服务端的实例名称
