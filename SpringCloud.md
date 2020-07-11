@@ -33,3 +33,11 @@ Eureka采用CS的设计框架，EurekaServer作为服务注册功能的服务器
  
  ![在这里插入图片描述](https://img-blog.csdnimg.cn/20200711001348572.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMDcyMzk5,size_16,color_FFFFFF,t_70)
        
+
+## Eureka集群原理说明
+![在这里插入图片描述](https://img-blog.csdnimg.cn/20200711143436580.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMDcyMzk5,size_16,color_FFFFFF,t_70)
+
+问题：微服务RPC远程服务调用最核心的是什么？
+  高可用，试想你的注册中心只有一个，它出了故障，会导致整个微服务环境不可用。
+  
+解决方式：搭建Eureka 注册中心集群，实现负载均衡+故障容错         
