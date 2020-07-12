@@ -32,7 +32,55 @@ Eureka采用CS的设计框架，EurekaServer作为服务注册功能的服务器
  ## 自我保护机制
  
  ![在这里插入图片描述](https://img-blog.csdnimg.cn/20200711001348572.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMDcyMzk5,size_16,color_FFFFFF,t_70)
+ 
+- 故障现象：保护模式主要用于一组客户端和Eureka Server之间存在网络分区场景下的保护，一旦
+
+进入保护模式，Eureka Server将会尝试保护其服务注册表中的信息，不再删除服务注册表中的数据，
+
+也就是不会注销任何微服务。
+
+- 导致原因：某时刻某一个微服务不可用了，Eureka不会立即清除，依旧会对微服务的信息进行保存
+
+属于CAP里面的AP分支
        
+- 什么是自我保护模式
+默认情况下，如果Eureka Server在一定时间内没有接受到某个微服务实例的心跳，EurekaServer将
+
+会注销该实例(默认90s)。但是是当网络分区故障发生(延时，卡顿，拥挤)时，微服务与EurekaServer
+
+之间无法正常通信，以上行为可能变的非常危险--因为微服务本身其实是健康的，此时不应该注销这个
+
+微服务。Eureka通过“自我保护模式”来解决这个问题---当EurekaServer节点在短时间内丢失过多客户
+
+端时(可能发生了网络分区故障)，那么这个节点就会进入自我保护模式。 
+
+![在这里插入图片描述](https://img-blog.csdnimg.cn/20200712083645748.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMDcyMzk5,size_16,color_FFFFFF,t_70)
+
+- 关闭自我保护机制
+    
+ ```yml
+ 修改Eureka的配置
+     #关闭自我保护机制，保证不可用服务被及时剔除
+            eureka:
+               server:
+                 enable-self-preservation: false   #默认是true，开启的
+                 eviction-interval-timer-in-ms: 2000   #将时间缩短
+ ```      
+ ![在这里插入图片描述](https://img-blog.csdnimg.cn/20200712085241686.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMDcyMzk5,size_16,color_FFFFFF,t_70)
+       
+```yml
+修改服务端的配置
+
+#默认
+ eureka.instance.lease-renewal-interval-in-seconds=30 #单位为秒(默认为30s)
+ eureka.instance.lease-expiration-duration-in-seconds=90 #单位为秒(默认为30s)
+  
+#修改
+ #Eureka客户端服务端发送心跳的时间间隔，单位为秒(默认为30s)
+ eureka.instance.lease-renewal-interval-in-seconds=1
+#Eureka服务端在收到最后一次心跳等待上限，单位为秒(默认为90s)，超时将剔除 
+ eureka.instance.lease-expiration-duration-in-seconds=2
+```
 
 ## Eureka集群原理说明
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/20200711143436580.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMDcyMzk5,size_16,color_FFFFFF,t_70)
