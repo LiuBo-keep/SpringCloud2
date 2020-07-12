@@ -78,7 +78,7 @@ Eureka采用CS的设计框架，EurekaServer作为服务注册功能的服务器
 #修改
  #Eureka客户端服务端发送心跳的时间间隔，单位为秒(默认为30s)
  eureka.instance.lease-renewal-interval-in-seconds=1
-#Eureka服务端在收到最后一次心跳等待上限，单位为秒(默认为90s)，超时将剔除 
+ #Eureka服务端在收到最后一次心跳等待上限，单位为秒(默认为90s)，超时将剔除 
  eureka.instance.lease-expiration-duration-in-seconds=2
 ```
 
