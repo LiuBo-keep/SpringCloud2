@@ -4,6 +4,7 @@ import com.hp.springcloud.entites.CommonResult;
 import com.hp.springcloud.entites.PayMent;
 import com.hp.springcloud.service.PayMentService;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
@@ -22,6 +23,9 @@ public class PayMentController {
     @Resource
     private PayMentService payMentService;
 
+    @Value("${server.port}")
+    private String serverPort;
+
     /**
      * 创建该类的日志对象但使用注解@Slf4j效果一样
      * 推荐使用注解@Slf4j
@@ -36,9 +40,9 @@ public class PayMentController {
         log.info("*****插入结果：" + result);
 
         if (result > 0) {
-            return new CommonResult(200, "插入数据库成功", result);
+            return new CommonResult(200, "插入数据库成功,serverPort："+serverPort, result);
         } else {
-            return new CommonResult(444, "插入数据库失败", null);
+            return new CommonResult(444, "插入数据库失败,serverPort："+serverPort, null);
         }
     }
 
@@ -49,9 +53,9 @@ public class PayMentController {
         log.info("*****返回结果：" + payment);
 
         if (null != payment) {
-            return new CommonResult(200, "查询成功", payment);
+            return new CommonResult(200, "查询成功,serverPort："+serverPort, payment);
         } else {
-            return new CommonResult(444, "查询失败，查询ID："+id, null);
+            return new CommonResult(444, "查询失败，查询ID："+id+"serverPort："+serverPort, null);
         }
     }
 }
