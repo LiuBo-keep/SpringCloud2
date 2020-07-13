@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hp.springcloud.dao.PayMentDao">
+
+    <insert id="create" parameterType="com.hp.springcloud.entites.PayMent" useGeneratedKeys="true" keyProperty="id">
+        insert into payment (id,serial) values (null ,#{serial});
+    </insert>
+
+
+    <!--
+       id:resultMap自定义的名称
+       type:结果集要映射的实体类
+       column:数据库内的字段
+       property:实体类内的字段
+       javaType:数据库内的字段类型
+    -->
+    <resultMap id="BaseResultMap" type="com.hp.springcloud.entites.PayMent">
+        <!--定义主键-->
+        <id column="id" property="id" jdbcType="BIGINT"/>
+        <!--定义普通属性-->
+        <result column="serial" property="serial" jdbcType="VARCHAR"/>
+    </resultMap>
+    <!--推荐使用resultMap自己对结果进行映射-->
+    <select id="getPaymentById" parameterType="Long" resultMap="BaseResultMap">
+        select id ,serial from payment where id=#{id};
+    </select>
+</mapper>
