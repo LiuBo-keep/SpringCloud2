@@ -89,3 +89,30 @@ Eureka采用CS的设计框架，EurekaServer作为服务注册功能的服务器
   高可用，试想你的注册中心只有一个，它出了故障，会导致整个微服务环境不可用。
   
 解决方式：搭建Eureka 注册中心集群，实现负载均衡+故障容错         
+
+
+---
+## Consul 简介
+
+ - 官网：https://www.consul.io/intro/index.html
+ ![在这里插入图片描述](https://img-blog.csdnimg.cn/20200714181234442.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMDcyMzk5,size_16,color_FFFFFF,t_70)
+ 
+ - 能干什么
+ ![在这里插入图片描述](https://img-blog.csdnimg.cn/20200714181542821.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMDcyMzk5,size_16,color_FFFFFF,t_70)
+ 
+ - 下载：https://www.consul.io/downloads.html
+ 
+ - 中文官网：https://www.springcloud.cc/spring-cloud-consul.html
+ 
+ - 官网安装说明：https://learn.hashicorp.com/consul/getting-started/install.html
+ 
+ - 下载完成后只有一个consul.exe文件，硬盘路径下双击运行，查看版本号信息
+ ![在这里插入图片描述](https://img-blog.csdnimg.cn/20200714182704351.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMDcyMzk5,size_16,color_FFFFFF,t_70)
+ 
+ 
+ - 使用开发模式启动：1.consul agent -dev 2.通过以下地址可以访问Consul的首页：http://localhost:8500
+ 
+ 3.界面
+ ![在这里插入图片描述](https://img-blog.csdnimg.cn/20200714212201439.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMDcyMzk5,size_16,color_FFFFFF,t_70)
+ 
+          
