@@ -170,6 +170,9 @@ Ribbon在工作时分成两部
       官方文档明确给出了警告：
       这个自定义配置类不能放在@ComponentScan所扫描的当前包下以及子包下
       否则我们自定义的这个配置类就会被所有的Ribbon客户端所共享，达不到特殊定制的目的了
+      
+- 默认负载轮询算法原理
+![在这里插入图片描述](https://img-blog.csdnimg.cn/20200718193505665.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMDcyMzk5,size_16,color_FFFFFF,t_70)      
 
  
           
