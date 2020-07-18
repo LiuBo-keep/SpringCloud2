@@ -27,7 +27,7 @@ public class ConsumerController {
     private RestTemplate restTemplate;
 
 
-    @GetMapping(value = "/consumer/payment/{id}")
+    @GetMapping(value = "/consumer/payment/get/{id}")
     public CommonResult getById(
             @PathVariable("id") Long id
     ){
