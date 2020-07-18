@@ -115,4 +115,55 @@ Eureka采用CS的设计框架，EurekaServer作为服务注册功能的服务器
  3.界面
  ![在这里插入图片描述](https://img-blog.csdnimg.cn/20200714212201439.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMDcyMzk5,size_16,color_FFFFFF,t_70)
  
+ 
+ ## 三种注册中心的异同点
+ ![在这里插入图片描述](https://img-blog.csdnimg.cn/20200714223140139.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMDcyMzk5,size_16,color_FFFFFF,t_70)
+ ![在这里插入图片描述](https://img-blog.csdnimg.cn/20200714223406412.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMDcyMzk5,size_16,color_FFFFFF,t_70)
+
+
+
+## Ribbon
+
+- 是什么
+
+Spring Cloud Ribbon 是基于Netflix Ribbon实现的一套客户端 负载均衡的工具
+
+简单的说，Ribbon就是Netflix发布的开源项目，主要功能是提供客户端的软件负载均衡算法和服务调用。Ribbon客户端组件提供一系列
+完善的配置项如连接超时，重试等。简单的说，就是在配置文件中列出Load Balancer(简称LB)后面所有的机器，Robbin会自动的帮助你
+基于某种规则(如轮询，随机连接等)去连接这些机器。我们很容易使用Robbin实现自定义的负载均衡算法。
+
+- 官网：https://github.com/Netflix/ribbon/wiki/Getting-Started
+
+- 能干什么？
+
+  1.LB(负载均衡)
+  
+      LB负载均衡(locad Balance)
+      简单的说就是将用户的请求分摊到多个服务上，从而达到系统的HA(高可用)。
+      常见的负载均衡有软件Nginx,LVS,硬件F5等
+      
+      Ribbon本地负载均衡客户端 VS Nginx服务端负载均衡区别：
+      Nginx是服务器负载均衡，客户端所有请求都会交给Nginx，然后由Nginx实现
+      转发请求，即负载均衡是由服务端实现的
+      Ribbon本地负载均衡，在调用微服务接口的时候，会在注册中心上获取注册信
+      息服务列表之后缓存到JVM本地，从而在本地实现RPC远程服务调用技术
+      
+     * 集中式LB
+     
+     * 进程内LB
+- 架构说明
+![在这里插入图片描述](https://img-blog.csdnimg.cn/20200718153213733.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMDcyMzk5,size_16,color_FFFFFF,t_70)
+
+Ribbon在工作时分成两部
+第一步先选择EurekaServer，他优先选择在同一个区域负载较少的Server
+
+第二步再根据用户指定的策略，在从server取到的服务注册列表中选择一个地址
+
+其中Ribbon提供了多种策略，比如轮询，随机和根据相应时间加权。     
+
+- Ribbon核心组件IRule(IRule:根据特定算法中从服务列表中选取一个要访问的服务)
+![在这里插入图片描述](https://img-blog.csdnimg.cn/2020071816124226.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMDcyMzk5,size_16,color_FFFFFF,t_70)
+![在这里插入图片描述](https://img-blog.csdnimg.cn/20200718161433692.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMDcyMzk5,size_16,color_FFFFFF,t_70)
+
+ 
           
