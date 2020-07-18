@@ -122,7 +122,7 @@ Eureka采用CS的设计框架，EurekaServer作为服务注册功能的服务器
 
 
 
-## Ribbon
+## Ribbon(负载均衡+RestTemplate)
 
 - 是什么
 
