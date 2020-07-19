@@ -172,7 +172,54 @@ Ribbon在工作时分成两部
       否则我们自定义的这个配置类就会被所有的Ribbon客户端所共享，达不到特殊定制的目的了
       
 - 默认负载轮询算法原理
-![在这里插入图片描述](https://img-blog.csdnimg.cn/20200718193505665.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMDcyMzk5,size_16,color_FFFFFF,t_70)      
+![在这里插入图片描述](https://img-blog.csdnimg.cn/20200718193505665.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMDcyMzk5,size_16,color_FFFFFF,t_70)   
 
+
+
+## OpenFeign
+
+![在这里插入图片描述](https://img-blog.csdnimg.cn/202007191158061.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMDcyMzk5,size_16,color_FFFFFF,t_70)
+
+- OpenFeign超时控制：
+    
+    OpenFeign默认等待1秒钟，超过后报错
+![在这里插入图片描述](https://img-blog.csdnimg.cn/20200719200054400.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMDcyMzk5,size_16,color_FFFFFF,t_70)
  
+      默认Feign客户端只等待一秒钟，但是服务端处理需要超过1秒钟，导致Feign客户端不想等待，直接报错。
+      为了避免这样的情况，有时候我们需要设置Feign客户端的超时控制。
+      
+      yml文件中开启配置
+            
+```yml
+#设置feign客户端超时时间(OpenFeign默认支持ribbo)
+ribbon:
+#指建立连接后从服务器读取到可用资源所用的时间
+   ReadTimeout: 5000
+#指的是建立连接所用的时间，适用于网络状况正常情况下，两端连接所用时间   
+   ConnectTimeout: 5000
+```
+
+- OpenFeign日志打印功能
+
+      1. 日志打印功能：
+      Feign提供了日志打印功能，我们可用通过配置来调整日志级别，从而了解Feign
+      请求的细节，说白了就是对Feign接口的调用情况进行监控和输出。
+      2.配置日志bean
+ ```java
+ @Configuration
+ public class FeignConfig{
+    
+    @Bean
+    Logger.Level feignLoggerLevel(){
+        return Logger.Level.FULL;
+    }
+ }
+ ```
+     3.yml文件需要开启日志的Feign客户端
+ ```yml
+     logging:
+       level:
+         #feign日志以什么级别监控哪个接口
+         接口路径：日志级别
+ ```    
           
