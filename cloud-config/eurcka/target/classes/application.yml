@@ -1,0 +1,21 @@
+server:
+  port: 8001
+
+spring:
+  application:
+    name: eurcka-server
+
+eureka:
+  instance:
+    hostname: 127.0.0.1
+  client:
+    register-with-eureka: false
+    fetch-registry: false
+    service-url:
+      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
+#    service-url:
+#      defauftZone: http://${eureka.instance.hostname}:${server.port}/eureka/
+
+
+
+

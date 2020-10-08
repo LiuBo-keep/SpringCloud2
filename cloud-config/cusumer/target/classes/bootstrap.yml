@@ -1,0 +1,21 @@
+server:
+  port: 8003
+spring:
+  application:
+    name: config-client
+  cloud:
+    config:
+#    分支名称
+      label: master
+      # 配置文件名称
+      name: application
+      #读取配置文件后缀名称
+      profile: dev
+#      配置中心地址 (综合上面3个，master分支上applicatin-dev.yml的配置文件被读取http://localhost:8002/master/applicatopn-dev.yml)
+      uri: http://127.0.0.1:8002
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8001/eureka
+
+
